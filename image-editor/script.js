@@ -32,6 +32,23 @@ const handleFilter = (e) => {
 	// filter: "grayscale" | "sepia" | "invert" | "hue-rotate" | "contrast" | "saturate" | "blur"
 
 	// TODO: write your code here
+	const filtersOptions = {
+		grayscale: 1,
+		sepia: 1,
+		invert: 1,
+		"hue-rotate": "90deg",
+		contrast: 2,
+		saturate: 2,
+		blur: "2px",
+	};
+	let tempFilters = preview.style.filter
+		.split(" ")
+		.filter((f) => f.includes("brightness"));
+
+	if (filter !== "none") {
+		tempFilters.push(`${filter}(${filtersOptions[filter]})`);
+	}
+	preview.style.filter = tempFilters.join(" ");
 };
 
 const handleFlip = (flip) => {
