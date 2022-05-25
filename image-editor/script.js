@@ -77,10 +77,12 @@ const handleFlip = (flip) => {
 
 const handleMouseEnter = () => {
 	// TODO: write your code here
+	previewScale.style.transform = "scale(2)";
 };
 
 const handleMouseLeave = () => {
 	// TODO: write your code here
+	previewScale.removeAttribute("style");
 };
 
 const handleMouseMove = (e) => {
