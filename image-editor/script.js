@@ -23,7 +23,12 @@ const handleBrightness = () => {
 	brightnessSliderValue.innerText = brightness;
 
 	// TODO: write your code here
-	preview.style.filter = `brightness(${brightness})`;
+	let tempFilters = preview.style.filter
+		.split(" ")
+		.filter((f) => !f.includes("brightness"));
+	tempFilters.push(`brightness(${brightness})`);
+
+	preview.style.filter = tempFilters.join(" ");
 };
 
 const handleFilter = (e) => {
