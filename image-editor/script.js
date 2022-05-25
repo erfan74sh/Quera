@@ -64,11 +64,8 @@ const handleFlip = (flip) => {
 	let tempFlips = flips.filter((f) =>
 		f.includes(flip === "vertical" ? "scaleX" : "scaleY")
 	);
-	// let tempFlips = [];
-	// console.log(tempFlips);
 	let flipX = flips.filter((flip) => flip.includes("scaleX"))[0];
 	let flipY = flips.filter((flip) => flip.includes("scaleY"))[0];
-	console.log({ flipX, flipY });
 	if (flip === "vertical" && !flipY) {
 		tempFlips.push("scaleY(-1)");
 	}
