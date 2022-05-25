@@ -94,4 +94,7 @@ const handleMouseMove = (e) => {
 	const pageY = e.pageY;
 
 	// TODO: write your code here
+	previewScale.style.transformOrigin = `${pageX - imageOffsetLeft}px ${
+		pageY - imageOffsetTop
+	}px`;
 };
