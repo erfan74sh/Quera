@@ -59,6 +59,23 @@ const handleFilter = (e) => {
 const handleFlip = (flip) => {
 	//  flip: "vertical" | "horizontal"
 	// TODO: write your code here
+	const flips = previewFlip.style.transform.split(" ");
+
+	let tempFlips = flips.filter((f) =>
+		f.includes(flip === "vertical" ? "scaleX" : "scaleY")
+	);
+	// let tempFlips = [];
+	// console.log(tempFlips);
+	let flipX = flips.filter((flip) => flip.includes("scaleX"))[0];
+	let flipY = flips.filter((flip) => flip.includes("scaleY"))[0];
+	console.log({ flipX, flipY });
+	if (flip === "vertical" && !flipY) {
+		tempFlips.push("scaleY(-1)");
+	}
+	if (flip === "horizontal" && !flipX) {
+		tempFlips.push("scaleX(-1)");
+	}
+	previewFlip.style.transform = tempFlips.join(" ");
 };
 
 const handleMouseEnter = () => {
