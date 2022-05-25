@@ -11,6 +11,11 @@ const handleRotate = () => {
 	rotateSliderValue.innerText = rotate;
 
 	// TODO: write your code here
+	const scaleFactor =
+		Math.abs(Math.sin((rotate * Math.PI) / 180).toFixed(5)) +
+		Math.abs(Math.cos((rotate * Math.PI) / 180).toFixed(5));
+
+	preview.style.transform = `rotate(${rotate}deg) scale(${scaleFactor})`;
 };
 
 const handleBrightness = () => {
