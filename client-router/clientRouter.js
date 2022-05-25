@@ -1,0 +1,45 @@
+let routes = null;
+let routeContainer = null;
+
+function processRoutes() {
+  const currentRoute = window.location.pathname;
+
+  if (!routeContainer) return;
+
+  if (routes[currentRoute]) {
+    // Normal route without params
+  } else {
+    // Routes containing params
+    // No match found, show 404 page:
+  }
+
+  handleLinks();
+}
+
+/**
+ * Add event listeners to each custom link
+ */
+function handleLinks() {
+  const links = document.querySelectorAll("a[data-href]");
+  // Handle link click events
+}
+
+function handleLinkClick(e) {
+  e.preventDefault();
+  if (e.currentTarget.dataset.href) {
+    // Handle link click
+  }
+}
+
+function handleRouteChange() {
+  // handle route change when user clicks the browser's back and forward buttons
+  window.onpopstate = processRoutes;
+}
+
+export function initializeRouter(routeList, container) {
+  routes = routeList;
+  routeContainer = container;
+
+  processRoutes();
+  handleRouteChange();
+}
