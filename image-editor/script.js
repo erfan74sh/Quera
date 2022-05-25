@@ -82,7 +82,7 @@ const handleMouseEnter = () => {
 
 const handleMouseLeave = () => {
 	// TODO: write your code here
-	previewScale.removeAttribute("style");
+	previewScale.style.transform = "scale(1)";
 };
 
 const handleMouseMove = (e) => {
