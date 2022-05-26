@@ -25,13 +25,14 @@ function processRoutes() {
 		routeContainer.innerHTML = routes[currentRoute]();
 	} else {
 		// Routes containing params
-		console.log(currentRoute);
-		const keys = [];
 		for (let route in routes) {
-			route = route.replace(/:(\w+)/g, (_, key) => {
-				keys.push(key);
-				return "([^\\/]+)";
-			});
+			const { regex, keys } = checkRoutes(route);
+			const match = currentRoute.match(regex);
+
+			if (match && keys.length > 0) {
+				routeContainer.innerHTML = routes[route]({ id: match[2] });
+				return;
+			}
 		}
 		// No match found, show 404 page:
 	}
