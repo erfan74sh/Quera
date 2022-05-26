@@ -31,7 +31,6 @@ function processRoutes() {
 
 			if (match && keys.length > 0) {
 				routeContainer.innerHTML = routes[route]({ id: match[2] });
-				return;
 			}
 		}
 		// No match found, show 404 page:
