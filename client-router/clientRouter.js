@@ -21,7 +21,6 @@ function processRoutes() {
 
 	if (routes[currentRoute]) {
 		// Normal route without params
-		console.log(routeContainer);
 		routeContainer.innerHTML = routes[currentRoute]();
 	} else {
 		// Routes containing params
@@ -45,12 +44,18 @@ function processRoutes() {
 function handleLinks() {
 	const links = document.querySelectorAll("a[data-href]");
 	// Handle link click events
+	[...links].map((link) => {
+		link.addEventListener("click", handleLinkClick);
+	});
 }
 
 function handleLinkClick(e) {
 	e.preventDefault();
 	if (e.currentTarget.dataset.href) {
 		// Handle link click
+		const url = e.currentTarget.dataset.href;
+		window.history.pushState({ url }, "", url);
+		processRoutes();
 	}
 }
 
