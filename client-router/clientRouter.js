@@ -19,9 +19,12 @@ function processRoutes() {
 
 	if (!routeContainer) return;
 
+	let isFound;
+
 	if (routes[currentRoute]) {
 		// Normal route without params
 		routeContainer.innerHTML = routes[currentRoute]();
+		isFound = true;
 	} else {
 		// Routes containing params
 		for (let route in routes) {
@@ -30,9 +33,13 @@ function processRoutes() {
 
 			if (match && keys.length > 0) {
 				routeContainer.innerHTML = routes[route]({ id: match[2] });
+				isFound = true;
 			}
 		}
 		// No match found, show 404 page:
+	}
+	if (!isFound) {
+		routeContainer.innerHTML = routes["404"]();
 	}
 
 	handleLinks();
